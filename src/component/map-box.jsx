@@ -21,6 +21,7 @@ export const MapBox = () => {
   const { user } = useParams();
 
   useEffect(() => {
+
     mapboxgl.accessToken =
       "pk.eyJ1Ijoia2FzdW5ncDIyIiwiYSI6ImNsaHJlZTVmeDAydjMzY24zcDI5OG9qdjIifQ.6o1VJpDKm2-wiu5R85M-aA";
 
@@ -123,7 +124,6 @@ export const MapBox = () => {
       onSnapshot(collection(db, "Location"), (snapshot) => {
         snapshot.forEach((doc) => {
           if (doc.data().Coordinates[0] != null) {
-           
             new mapboxgl.Marker().setLngLat(doc.data().Coordinates).addTo(map);
           } else {
             return;
